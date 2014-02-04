@@ -12,23 +12,31 @@
   "Return the current window." []
   (ctx/->obj :tabset))
 
+(defn current-buffer []
+  (tabs/active-tab))
+
 
 (defn get-windows []
   (:tabsets (deref tabs/multi)))
 
 (defn other-windows []
-  (when-let [cur-ts (ctx/->obj :tabset)]
-    (filter #(not= cur-ts %) (get-windows))))
+  (when-let [cur-w (current-window)]
+    (filter #(not= cur-w %) (get-windows))))
+
+(defn next-window [cur]
+  (let [windows (get-windows)]
+    (or (second (drop-while #(not= cur %) windows))
+        (last (drop-while #(not= cur %) (reverse windows))))))
 
 
 (defn move-to-window
   "Move the current tab to another window (tabset)."
   ([] (move-to-window nil))
   ([dest-w]
-   (when-let [ts (current-window)]
-     (let [cur (@ts :active-obj) ;; active tab
-           next (or dest-w (first (other-windows)))]
-       (when (and cur next (not= next ts))
+   (when-let [cw (current-window)]
+     (let [cur (current-buffer)
+           next (or dest-w (next-window cw))]
+       (when (and cur next (not= next cw))
          (tabs/rem! cur)
          (tabs/add! cur next)
          (tabs/active! cur))))))
@@ -42,23 +50,21 @@
 
 
 (defn delete-window
-  "Destroy the given window (tabset)."[ts]
-  (tabs/rem-tabset ts true)
-  (tabs/equalize-tabset-widths))
+  "Destroy the given window (tabset)."[w]
+  (tabs/rem-tabset w true))
 
 
 (defn delete-current-window
   "Move all the tabs to the previous tabset and destroy the current window. Do nothing if there's only one window." []
-  (when-let [ts (ctx/->obj :tabset)]
+  (when-let [ts (current-window)]
     (delete-window ts)))
 
 
 (defn delete-other-windows []
-  (when-let [ts (current-window)]
-     (let [cur (@ts :active-obj)] ;; active tab
-       (doseq [w (other-windows)]
-         (delete-window w))
-       (tabs/active! cur))))
+  (while (seq (other-windows))
+    (let [cur (current-buffer)]
+      (delete-window (first (other-windows)))
+    (tabs/active! cur))))
 
 
 (defn kill-buffer []
@@ -81,7 +87,7 @@
 (cmd/command {:command ::delete-other-windows
               :desc "Bufferize: Keep only the current window."
               :exec (fn []
-                      (delete-current-window))})
+                      (delete-other-windows))})
 
 (cmd/command {:command ::kill-buffer
               :desc "Bufferize: Kill current buffer."
