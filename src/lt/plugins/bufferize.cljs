@@ -1,4 +1,4 @@
-(ns lt.plugins.Bufferize
+(ns lt.plugins.bufferize
   (:require [lt.objs.tabs :as tabs]
             [lt.objs.command :as cmd]
             [lt.object :as object]

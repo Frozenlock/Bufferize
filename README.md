@@ -1,6 +1,6 @@
 # Bufferize
 
-Easier emacs-like buffers (tabs) navigation for LigthTable.
+Easier emacs-like buffers (tabs) navigation for LightTable.
 
 ## Usage
 

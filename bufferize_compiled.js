@@ -1,5 +1,5 @@
-if(!lt.util.load.provided_QMARK_('lt.plugins.Bufferize')) {
-goog.provide('lt.plugins.Bufferize');
+if(!lt.util.load.provided_QMARK_('lt.plugins.bufferize')) {
+goog.provide('lt.plugins.bufferize');
 goog.require('cljs.core');
 goog.require('lt.objs.context');
 goog.require('lt.objs.context');
@@ -12,7 +12,7 @@ goog.require('lt.objs.tabs');
 /**
 * Move the current tab to another window (tabset). Sends to the NEXT window, unless given an argument.
 */
-lt.plugins.Bufferize.move_to_window = (function() {
+lt.plugins.bufferize.move_to_window = (function() {
 var move_to_window = null;
 var move_to_window__0 = (function (){return move_to_window.call(null,false);
 });
@@ -64,27 +64,27 @@ return move_to_window;
 /**
 * Create a new window and send the current tab in it.
 */
-lt.plugins.Bufferize.split_window_right = (function split_window_right(){lt.objs.tabs.spawn_tabset.call(null);
+lt.plugins.bufferize.split_window_right = (function split_window_right(){lt.objs.tabs.spawn_tabset.call(null);
 lt.objs.tabs.equalize_tabset_widths.call(null);
-return lt.plugins.Bufferize.move_to_window.call(null);
+return lt.plugins.bufferize.move_to_window.call(null);
 });
 /**
 * Move all the tabs to the previous tabset and destroy the current window. Do nothing if there's only one window.
 */
-lt.plugins.Bufferize.delete_window = (function delete_window(){var temp__4092__auto__ = lt.objs.context.__GT_obj.call(null,new cljs.core.Keyword(null,"tabset","tabset",4427500575));if(cljs.core.truth_(temp__4092__auto__))
+lt.plugins.bufferize.delete_window = (function delete_window(){var temp__4092__auto__ = lt.objs.context.__GT_obj.call(null,new cljs.core.Keyword(null,"tabset","tabset",4427500575));if(cljs.core.truth_(temp__4092__auto__))
 {var ts = temp__4092__auto__;return lt.objs.tabs.rem_tabset.call(null,ts,true);
 } else
 {return null;
 }
 });
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.Bufferize","split-window-right","lt.plugins.Bufferize/split-window-right",768407892),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Add another window.",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.Bufferize.split_window_right.call(null);
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.bufferize","split-window-right","lt.plugins.bufferize/split-window-right",2686916924),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Add another window.",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.bufferize.split_window_right.call(null);
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.Bufferize","delete-window","lt.plugins.Bufferize/delete-window",2108948436),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Remove current window.",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.Bufferize.delete_window.call(null);
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.bufferize","delete-window","lt.plugins.bufferize/delete-window",4002340796),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Remove current window.",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.bufferize.delete_window.call(null);
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.Bufferize","switch-buffer","lt.plugins.Bufferize/switch-buffer",3412432123),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Switch to next buffer in the current window.",new cljs.core.Keyword(null,"exec","exec",1017031683),new cljs.core.Keyword(null,"exec","exec",1017031683).cljs$core$IFn$_invoke$arity$1(lt.objs.command.by_id.call(null,new cljs.core.Keyword(null,"tabs.next","tabs.next",3470721749)))], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.Bufferize","send-buffer-next-window","lt.plugins.Bufferize/send-buffer-next-window",3309574628),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Send current buffer to next window.",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.Bufferize.move_to_window.call(null);
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.bufferize","switch-buffer","lt.plugins.bufferize/switch-buffer",1549563171),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Switch to next buffer in the current window.",new cljs.core.Keyword(null,"exec","exec",1017031683),new cljs.core.Keyword(null,"exec","exec",1017031683).cljs$core$IFn$_invoke$arity$1(lt.objs.command.by_id.call(null,new cljs.core.Keyword(null,"tabs.next","tabs.next",3470721749)))], null));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.bufferize","send-buffer-next-window","lt.plugins.bufferize/send-buffer-next-window",1178515916),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Send current buffer to next window.",new cljs.core.Keyword(null,"exec","exec",1017031683),(function (){return lt.plugins.bufferize.move_to_window.call(null);
 })], null));
-lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.Bufferize","other-window","lt.plugins.Bufferize/other-window",2984486095),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Focus on the next window.",new cljs.core.Keyword(null,"exec","exec",1017031683),new cljs.core.Keyword(null,"exec","exec",1017031683).cljs$core$IFn$_invoke$arity$1(lt.objs.command.by_id.call(null,new cljs.core.Keyword(null,"tabset.next","tabset.next",1472250630)))], null));
+lt.objs.command.command.call(null,new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"command","command",1964298941),new cljs.core.Keyword("lt.plugins.bufferize","other-window","lt.plugins.bufferize/other-window",870204663),new cljs.core.Keyword(null,"desc","desc",1016984067),"Bufferize: Focus on the next window.",new cljs.core.Keyword(null,"exec","exec",1017031683),new cljs.core.Keyword(null,"exec","exec",1017031683).cljs$core$IFn$_invoke$arity$1(lt.objs.command.by_id.call(null,new cljs.core.Keyword(null,"tabset.next","tabset.next",1472250630)))], null));
 }
 
 //# sourceMappingURL=bufferize_compiled.js.map
