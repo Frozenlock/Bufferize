@@ -18,6 +18,7 @@ Easier emacs-like buffers (tabs) navigation for LightTable.
 
 ## Changelog
 
+* 0.0.2 Correct keymap error.
 * 0.0.1 Initial release.
 
 ## License
