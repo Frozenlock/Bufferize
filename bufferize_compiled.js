@@ -72,7 +72,8 @@ return lt.plugins.bufferize.move_to_window.call(null);
 * Move all the tabs to the previous tabset and destroy the current window. Do nothing if there's only one window.
 */
 lt.plugins.bufferize.delete_window = (function delete_window(){var temp__4092__auto__ = lt.objs.context.__GT_obj.call(null,new cljs.core.Keyword(null,"tabset","tabset",4427500575));if(cljs.core.truth_(temp__4092__auto__))
-{var ts = temp__4092__auto__;return lt.objs.tabs.rem_tabset.call(null,ts,true);
+{var ts = temp__4092__auto__;lt.objs.tabs.rem_tabset.call(null,ts,true);
+return lt.objs.tabs.equalize_tabset_widths.call(null);
 } else
 {return null;
 }

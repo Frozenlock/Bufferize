@@ -10,7 +10,7 @@ Easier emacs-like buffers (tabs) navigation for LightTable.
 
 `ctrl-x o` Switch focus to next window.
 
-`ctrl-x O` Send current buffer to next window.
+`ctrl-x ctrl-o` Send current buffer to next window.
 
 `ctrl-x b` Switch between buffers in current window.
 

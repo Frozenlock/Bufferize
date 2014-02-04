@@ -33,7 +33,8 @@
 (defn delete-window
   "Move all the tabs to the previous tabset and destroy the current window. Do nothing if there's only one window." []
   (when-let [ts (ctx/->obj :tabset)]
-      (tabs/rem-tabset ts true)))
+      (tabs/rem-tabset ts true)
+    (tabs/equalize-tabset-widths)))
 
 
 
