@@ -2,5 +2,6 @@
            "ctrl-x ctrl-o" [:lt.plugins.bufferize/send-buffer-next-window]
            "ctrl-x b" [:lt.plugins.bufferize/switch-buffer]
            "ctrl-x 0" [:lt.plugins.bufferize/delete-window]
+           "ctrl-x 1" [:lt.plugins.bufferize/delete-other-windows]
            "ctrl-x 3" [:lt.plugins.bufferize/split-window-right]
-           "ctrl-x k" [:tabs.close]}}}
+           "ctrl-x k" [:lt.plugins.bufferize/kill-buffer]}}}
