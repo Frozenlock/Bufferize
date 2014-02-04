@@ -68,10 +68,7 @@
 
 
 (defn kill-buffer []
-  (let [w (current-window)]
-    ((:exec (cmd/by-id :tabs.close)))
-    (when (= 0 (:count @w)) ;; killed this window's last buffer?
-      (delete-window w))))
+  ((:exec (cmd/by-id :tabs.close))))
 
 
 (cmd/command {:command ::split-window-right
